@@ -1,8 +1,8 @@
-  @extends('frontend.layouts.master')
+@extends('frontend.layouts.master')
 
- @section('content')
+@section('content')
   @include('frontend.layouts.slider')
-  
+
 	<!-- Mission and Vision -->
 	<section class="mission_vision">
 		<div class="container">

@@ -17,11 +17,15 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-// use App\Http\Controllers\AdvertismentsController;
-Route::get('/',[App\Http\Controllers\Frontend\FrontendController::class,'index']);
-
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// use App\Http\Controllers\AdvertismentsController;
+Route::get('/',[App\Http\Controllers\Frontend\FrontendController::class,'index']);
+Route::get('about-us',[App\Http\Controllers\Frontend\FrontendController::class,'about_us']);
+
+Route::get('contact',[App\Http\Controllers\Frontend\FrontendController::class,'contact']);
 

@@ -2,21 +2,21 @@
 	<section class="header">
 		<div class="container">
 			<nav class="navbar navbar-expand-md navbar-light">
-				<a href="" class="navbar-brand"><img src="{{  asset('frontend/image/logo.png') }}" style="height: 50px;"></a>
+				<a href="{{ url('/') }}" class="navbar-brand"><img src="{{  asset('frontend/image/logo.png') }}" style="height: 50px;"></a>
 				<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button>
 				<div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
 					<div class="navbar-nav popular">
-						<a href="index.html" class="nav-item nav-link active">Home</a>
+						<a href="{{ url('/') }}" class="nav-item nav-link active">Home</a>
 						<div class="nav-item dropdown">
 							<a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">About Us</a>
 							<div class="dropdown-menu" style="background: #BADDFB;">
-								<a href="aboutus.html" class="dropdown-item">About Us</a>
+								<a href="{{ url('about-us') }}" class="dropdown-item">About Us</a>
 								<a href="" class="dropdown-item">Mission</a>
 								<a href="" class="dropdown-item">Vision</a>
 							</div>
 						</div>
 						<a href="" class="nav-item nav-link">News and Event</a>
-						<a href="contact.html" class="nav-item nav-link">Contact Us</a>
+						<a href="{{ url('contact') }}" class="nav-item nav-link">Contact Us</a>
 						<a href="" class="nav-item nav-link">Login</a>
 					</div>
 					<div class="navbar-nav">
