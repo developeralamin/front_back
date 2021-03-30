@@ -9,5 +9,15 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
+	public $data = [];
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    
+     public function __construct()
+    {
+    	$this->data['main_menu'] = 'Users';
+    	$this->data['sub_menu']  = 'Users';
+
+    	$this->data['tab_menu']  = '';
+
+    }
 }

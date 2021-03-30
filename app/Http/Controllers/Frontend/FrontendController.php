@@ -9,16 +9,16 @@ class FrontendController extends Controller
 {
     public function index()
     {
-    	return view('frontend.layouts.home');
+    	return view('auth.login');
     }
 
-     public function about_us()
-    {
-    	return view('frontend.single_pages.about_us');
-    }
+    //  public function about_us()
+    // {
+    // 	return view('frontend.single_pages.about_us');
+    // }
 
-    public function contact()
-    {
-    	return view('frontend.single_pages.contact');
-    }
+    // public function contact()
+    // {
+    // 	return view('frontend.single_pages.contact');
+    // }
 }

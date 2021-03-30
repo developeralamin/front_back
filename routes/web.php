@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\Setup\StudentSetupController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,3 +34,10 @@ Route::get('about-us',[App\Http\Controllers\Frontend\FrontendController::class,'
 
 Route::get('contact',[App\Http\Controllers\Frontend\FrontendController::class,'contact']);
 
+// Route::resource('city', CitiesController::class);
+
+Route::resource('user',UserController::class,['except' => ['show'] ]);
+
+Route::resource('profile',ProfileController::class);
+
+Route::resource('setup',StudentSetupController::class);

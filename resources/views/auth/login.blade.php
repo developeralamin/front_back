@@ -95,23 +95,23 @@
                         <img src="https://cdn.freebiesupply.com/logos/large/2x/pinterest-circle-logo-png-transparent.png" class="brand_logo" alt="Logo">
                     </div>
                 </div>
-                <div class="d-flex justify-content-center form_container">
-                    
-                   <form method="POST" action="{{ route('login') }}">
-                        @csrf
-@if($errors->any())
-     <div class="alert alert-danger alert-dismissible">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <div class="d-flex justify-content-center form_container">                
+            <form method="POST" action="{{ route('login') }}">
+                       
+         @csrf
+        @if($errors->any())
+             <div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 
-    @foreach($errors->all() as $error)
+            @foreach($errors->all() as $error)
 
-    <strong>{{ $error }}</strong> 
+            <strong>{{ $error }}</strong> 
 
-    @endforeach
+            @endforeach
 
-  </div>
-  @endif
-                        <div class="input-group mb-3">
+          </div>
+          @endif
+                <div class="input-group mb-3">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
