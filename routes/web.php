@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\Setup\StudentSetupController;
+use App\Http\Controllers\Backend\Setup\YearController;
 
 
 /*
@@ -41,3 +42,5 @@ Route::resource('user',UserController::class,['except' => ['show'] ]);
 Route::resource('profile',ProfileController::class);
 
 Route::resource('setup',StudentSetupController::class);
+
+Route::resource('year',YearController::class);
