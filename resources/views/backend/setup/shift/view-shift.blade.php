@@ -10,11 +10,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Manage Year</h1>
+            <h1 class="m-0">Manage Student Shift</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <a href="{{ route('year.create') }}" class="btn btn-danger"> <i class="fa fa-plus-circle"></i> Add Year </a>
+              <a href="{{ route('shift.create') }}" class="btn btn-danger"> <i class="fa fa-plus-circle"></i> Add Shift </a>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -24,7 +24,7 @@
 <!-- DataTales Example -->
 <div class="card shadow page-header mb-4">
    <div class="card-header py-3">
-       <h6 class="m-0 font-weight-bold text-primary">Student Year List</h6>
+       <h6 class="m-0 font-weight-bold text-primary">Shift List</h6>
     </div>
    
       
@@ -35,7 +35,7 @@
               <thead>
                   <tr>                                              
                     <th>SL.</th>                          
-                    <th>Year</th>                            
+                    <th>Shift</th>                            
                     <th class="text-right">Actions</th>                     
                     </tr>
                 </thead>
@@ -43,27 +43,27 @@
                <tfoot>
                    <tr>                                              
                     <th>SL.</th>      
-                    <th>Year</th>                        
+                    <th>Shift</th>                        
                     <th class="text-right">Actions</th>                     
                     </tr>
             </tfoot>
 
                                     
        <tbody>
-@foreach($year as $key=>$year)
+@foreach($shift as $key=>$shift)
        <tr>
           <td>{{ $key+1 }}</td>
-          <td>{{ $year->year }}</td>
+          <td>{{ $shift->shift }}</td>
           
 
           
           <td class="text-right">
-         <form method='post' action="{{ route('year.destroy',['year' => $year->id]) }}">
+         <form method='post' action="{{ route('shift.destroy',['shift' => $shift->id]) }}">
             @csrf
 {{--         <a href=""class="btn btn-info">
           <i class="fa fa-eye"></i>
          </a>   --}} 
-        <a href="{{ route('year.edit',['year' => $year->id]) }}"class="btn btn-info">
+        <a href="{{ route('shift.edit',['shift' => $shift->id]) }}"class="btn btn-info">
           <i class="fa fa-edit"></i>
          </a>  
 

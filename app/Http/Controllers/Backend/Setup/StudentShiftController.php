@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Backend\Setup;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use App\Models\Year;
-use App\Http\Requests\YearRequest;
-use App\Http\Requests\UpdateStudentClassRequest;
+use App\Models\StudentShift;
+use App\Http\Requests\ShiftRequest;
+use App\Http\Requests\UpdateShiftRequest;
 
 
 
-class YearController extends Controller
+class StudentShiftController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,10 +20,9 @@ class YearController extends Controller
      */
     public function index()
     {
-       
-       $this->data['year']  = Year::all();
 
-       return view('backend.setup.year.view-year',$this->data);
+        $this->data['shift'] = StudentShift::all();
+        return view('backend.setup.shift.view-shift',$this->data);
 
     }
 
@@ -34,9 +33,8 @@ class YearController extends Controller
      */
     public function create()
     {
-        $this->data['mode']   = 'Create';
-
-        return view('backend.setup.year.form-year',$this->data);
+         $this->data['mode']             = 'Create';
+         return view('backend.setup.shift.form-shift',$this->data);
     }
 
     /**
@@ -45,17 +43,16 @@ class YearController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(YearRequest $request)
+    public function store(ShiftRequest $request)
     {
-         $formdata             = $request->all();
+        $formdata             = $request->all();
 
-       if(Year::create($formdata) ) {
+       if(StudentShift::create($formdata) ) {
         Session::flash('message','Data Added Successfully');
        }
 
-       return redirect()->to('year');  
-
-  }
+       return redirect()->to('shift');
+    }
 
     /**
      * Display the specified resource.
@@ -76,10 +73,10 @@ class YearController extends Controller
      */
     public function edit($id)
     {
-         $this->data['mode']          = 'Edit';
-         $this->data['year']          = Year::find($id);
+         $this->data['mode']             = 'Edit';
+          $this->data['shift']           = StudentShift::find($id);
 
-          return view('backend.setup.year.form-year',$this->data);
+          return view('backend.setup.shift.form-shift',$this->data);
     }
 
     /**
@@ -89,17 +86,17 @@ class YearController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(YearRequest $request, $id)
+    public function update(UpdateShiftRequest $request, $id)
     {
-         $data                      = $request->all();
+        $data                        = $request->all();
 
-        $year                       = Year::find($id);
-        $year->year                 = $data['year'];
+        $shift                       = StudentShift::find($id);
+        $shift->shift                = $data['shift'];
 
-        if($year->save() ) {
+        if($shift->save() ) {
            Session::flash('message','Data Updated Successfully');
         }
-         return redirect()->to('year');
+         return redirect()->to('shift');
     }
 
     /**
@@ -110,11 +107,11 @@ class YearController extends Controller
      */
     public function destroy($id)
     {
-         $user = Year::find($id);
-         if($user->delete() ) {
+         $shift = StudentShift::find($id);
+         if($shift->delete() ) {
             Session::flash('message','Data Delete Successfully');
          }
 
-         return redirect()->to('year');
+         return redirect()->to('shift');
     }
 }

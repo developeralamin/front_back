@@ -67,6 +67,29 @@
                 </a>
               </li>             
             </ul>
+
+
+            <ul class="nav nav-treeview">                    
+              <li class="nav-item">
+                <a href="{{ url('student_group') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Student Group</p>
+                </a>
+              </li>             
+            </ul>
+
+             <ul class="nav nav-treeview">                    
+              <li class="nav-item">
+                <a href="{{ url('shift') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Student Shift</p>
+                </a>
+              </li>             
+            </ul>
+
+
+
+
           </li>
          
 

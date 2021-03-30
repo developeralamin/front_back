@@ -10,22 +10,21 @@
       <div class="container-fluid">
         <div class="row mb-2">
 
-          @if($mode == 'Create')
+      @if($mode == 'Edit')
 
            <div class="col-sm-6">
-            <h1 class="m-0">Add Student Class</h1>
+            <h1 class="m-0">Update Student Shift </h1>
           </div><!-- /.col -->
-      @else
-
-        <div class="col-sm-6">
-            <h1 class="m-0">Update Class</h1>
+         @else
+         <div class="col-sm-6">
+            <h1 class="m-0">Add Student Shift</h1>
           </div><!-- /.col -->
-
-        @endif
+         @endif
+    
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <a href="{{ route('setup.store') }}" class="btn btn-danger"> <i class="fa fa-list"></i> All Student Class List </a>
+              <a href="{{ route('shift.store') }}" class="btn btn-danger"> <i class="fa fa-list"></i> Student Shift List </a>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -40,18 +39,17 @@
 <div class="card shadow page-header mb-4 justify-content-center">
   <div class="col-md-6">
   
-  @if($mode == 'Create')
+   @if($mode == 'Edit')
 
      <div class="card-header py-3">
-       <h6 class="m-0 font-weight-bold text-primary">Add Student Class</h6>
+       <h6 class="m-0 font-weight-bold text-primary">Update Student Shift</h6>
     </div>
-@else
-
+   @else
 <div class="card-header py-3">
-       <h6 class="m-0 font-weight-bold text-primary">Update Class</h6>
+       <h6 class="m-0 font-weight-bold text-primary">Add Student Shift</h6>
     </div>
+  @endif
 
-@endif
 
 
 
@@ -70,22 +68,19 @@
       </div>
   @endif
 
-     
+ @if($mode == 'Edit')
 
-    @if($mode == 'Edit')
-
-    {{  Form::model($setup,['route' =>['setup.update',$setup->id], 'method' => 'put']) }}
+    {{  Form::model($shift,['route' =>['shift.update',$shift->id], 'method' => 'put']) }}
    
     @else
+     
+    {!! Form::open(['route' => 'shift.store','method' => 'post']) !!}
 
-    {!! Form::open(['route' => 'setup.store','method' => 'post']) !!}
-
-    @endif
-
+@endif
 
   <div class="form-group">
-    <label for="name">Student Class Name<span class="text-danger">*</span></label>
-     {{ Form::text('name', NULL, ['class'=>'form-control', 'id' => 'name', 'placeholder' => 'Class Name' ]) }}
+    <label for="name">Student Shift<span class="text-danger">*</span></label>
+     {{ Form::text('shift', NULL, ['class'=>'form-control', 'id' => 'name', 'placeholder' => 'Shift' ]) }}
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>

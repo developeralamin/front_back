@@ -6,6 +6,9 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\Setup\StudentSetupController;
 use App\Http\Controllers\Backend\Setup\YearController;
+use App\Http\Controllers\Backend\Setup\StudentGroupController;
+use App\Http\Controllers\Backend\Setup\StudentShiftController;
+
 
 
 /*
@@ -44,3 +47,8 @@ Route::resource('profile',ProfileController::class);
 Route::resource('setup',StudentSetupController::class);
 
 Route::resource('year',YearController::class);
+
+Route::resource('student_group',StudentGroupController::class);
+
+Route::resource('shift',StudentShiftController::class);
+

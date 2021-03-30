@@ -24,7 +24,7 @@ class UpdateStudentClassRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'   => 'required',
+            'name'   => 'required|unique:student_setups',
         ];
     }
 }

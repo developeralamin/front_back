@@ -118,7 +118,7 @@ public function __construct()
     {
          $user = User::find($id);
          if($user->delete() ) {
-            Session::flash('message','User Delete Successfully');
+            Session::flash('message','Data Delete Successfully');
          }
 
          if(file_exists('public/upload/user_images/'. $user->image) AND ! empty($user->image)  ) {

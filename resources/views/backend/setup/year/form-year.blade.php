@@ -84,7 +84,7 @@
 
 
   <div class="form-group">
-    <label for="name">Year<span class="text-danger">*</span></label>
+    <label for="name">Student Year<span class="text-danger">*</span></label>
      {{ Form::text('year', NULL, ['class'=>'form-control', 'id' => 'name', 'placeholder' => 'Year' ]) }}
   </div>
 

@@ -10,22 +10,20 @@
       <div class="container-fluid">
         <div class="row mb-2">
 
-          @if($mode == 'Create')
+          @if($mode == 'Edit')
 
            <div class="col-sm-6">
-            <h1 class="m-0">Add Student Class</h1>
+            <h1 class="m-0">Update Student Group </h1>
           </div><!-- /.col -->
-      @else
-
-        <div class="col-sm-6">
-            <h1 class="m-0">Update Class</h1>
+         @else
+         <div class="col-sm-6">
+            <h1 class="m-0">Add Student Group</h1>
           </div><!-- /.col -->
-
-        @endif
+         @endif
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <a href="{{ route('setup.store') }}" class="btn btn-danger"> <i class="fa fa-list"></i> All Student Class List </a>
+              <a href="{{ route('student_group.store') }}" class="btn btn-danger"> <i class="fa fa-list"></i>Student Group List </a>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -39,19 +37,17 @@
 <!-- DataTales Example -->
 <div class="card shadow page-header mb-4 justify-content-center">
   <div class="col-md-6">
-  
-  @if($mode == 'Create')
+
+    @if($mode == 'Edit')
 
      <div class="card-header py-3">
-       <h6 class="m-0 font-weight-bold text-primary">Add Student Class</h6>
+       <h6 class="m-0 font-weight-bold text-primary">Update Student Group</h6>
     </div>
-@else
-
+   @else
 <div class="card-header py-3">
-       <h6 class="m-0 font-weight-bold text-primary">Update Class</h6>
+       <h6 class="m-0 font-weight-bold text-primary">Add Student Group</h6>
     </div>
-
-@endif
+  @endif
 
 
 
@@ -71,21 +67,19 @@
   @endif
 
      
+  @if($mode == 'Edit')
 
-    @if($mode == 'Edit')
-
-    {{  Form::model($setup,['route' =>['setup.update',$setup->id], 'method' => 'put']) }}
+    {{  Form::model($student_group,['route' =>['student_group.update',$student_group->id], 'method' => 'put']) }}
    
     @else
 
-    {!! Form::open(['route' => 'setup.store','method' => 'post']) !!}
+    {!! Form::open(['route' => 'student_group.store','method' => 'post']) !!}
 
-    @endif
-
+  @endif
 
   <div class="form-group">
-    <label for="name">Student Class Name<span class="text-danger">*</span></label>
-     {{ Form::text('name', NULL, ['class'=>'form-control', 'id' => 'name', 'placeholder' => 'Class Name' ]) }}
+    <label for="name">Student Group<span class="text-danger">*</span></label>
+     {{ Form::text('group', NULL, ['class'=>'form-control', 'id' => 'name', 'placeholder' => 'Group' ]) }}
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>

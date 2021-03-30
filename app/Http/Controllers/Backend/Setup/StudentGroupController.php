@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Backend\Setup;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use App\Models\Year;
-use App\Http\Requests\YearRequest;
-use App\Http\Requests\UpdateStudentClassRequest;
+use App\Models\StudentGroup;
+use App\Http\Requests\StudentGroupRequest;
+use App\Http\Requests\UpdateGroupRequest;
 
 
 
-class YearController extends Controller
+
+class StudentGroupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,11 +21,9 @@ class YearController extends Controller
      */
     public function index()
     {
-       
-       $this->data['year']  = Year::all();
+          $this->data['student_group']     = StudentGroup::all();
 
-       return view('backend.setup.year.view-year',$this->data);
-
+        return view('backend.setup.group.view-group',$this->data);
     }
 
     /**
@@ -34,9 +33,8 @@ class YearController extends Controller
      */
     public function create()
     {
-        $this->data['mode']   = 'Create';
-
-        return view('backend.setup.year.form-year',$this->data);
+         $this->data['mode']             = 'Create';
+         return view('backend.setup.group.form-group',$this->data);
     }
 
     /**
@@ -45,17 +43,16 @@ class YearController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(YearRequest $request)
+    public function store(StudentGroupRequest $request)
     {
-         $formdata             = $request->all();
+        $formdata             = $request->all();
 
-       if(Year::create($formdata) ) {
+       if(StudentGroup::create($formdata) ) {
         Session::flash('message','Data Added Successfully');
        }
 
-       return redirect()->to('year');  
-
-  }
+       return redirect()->to('student_group');  
+    }
 
     /**
      * Display the specified resource.
@@ -76,10 +73,10 @@ class YearController extends Controller
      */
     public function edit($id)
     {
-         $this->data['mode']          = 'Edit';
-         $this->data['year']          = Year::find($id);
+          $this->data['mode']             = 'Edit';
+         $this->data['student_group']     = StudentGroup::find($id);
 
-          return view('backend.setup.year.form-year',$this->data);
+          return view('backend.setup.group.form-group',$this->data);
     }
 
     /**
@@ -89,17 +86,17 @@ class YearController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(YearRequest $request, $id)
+    public function update(UpdateGroupRequest $request, $id)
     {
-         $data                      = $request->all();
+        $data                                = $request->all();
 
-        $year                       = Year::find($id);
-        $year->year                 = $data['year'];
+        $student_group                       = StudentGroup::find($id);
+        $student_group->group                = $data['group'];
 
-        if($year->save() ) {
+        if($student_group->save() ) {
            Session::flash('message','Data Updated Successfully');
         }
-         return redirect()->to('year');
+         return redirect()->to('student_group');
     }
 
     /**
@@ -110,11 +107,11 @@ class YearController extends Controller
      */
     public function destroy($id)
     {
-         $user = Year::find($id);
-         if($user->delete() ) {
+        $group = StudentGroup::find($id);
+         if($group->delete() ) {
             Session::flash('message','Data Delete Successfully');
          }
 
-         return redirect()->to('year');
+         return redirect()->to('student_group');
     }
 }

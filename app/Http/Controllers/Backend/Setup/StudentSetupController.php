@@ -49,7 +49,7 @@ class StudentSetupController extends Controller
        $formdata             = $request->all();
 
        if(StudentSetup::create($formdata) ) {
-        Session::flash('message','Student Class Added Successfully');
+        Session::flash('message','Class Added Successfully');
        }
 
        return redirect()->to('setup');
@@ -113,7 +113,7 @@ class StudentSetupController extends Controller
     {
          $user = StudentSetup::find($id);
          if($user->delete() ) {
-            Session::flash('message','Student Class Delete Successfully');
+            Session::flash('message','Class Delete Successfully');
          }
 
          return redirect()->to('setup');
