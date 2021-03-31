@@ -5,14 +5,13 @@ namespace App\Http\Controllers\Backend\Setup;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use App\Models\StudentGroup;
-use App\Http\Requests\StudentGroupRequest;
+use App\Models\FeeCategory;
+use App\Http\Requests\FeeCategoryRequest;
 use App\Http\Requests\UpdateGroupRequest;
 
 
 
-
-class StudentGroupController extends Controller
+class FeeCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,9 +20,9 @@ class StudentGroupController extends Controller
      */
     public function index()
     {
-          $this->data['student_group']     = StudentGroup::all();
+         $this->data['fee']  = FeeCategory::all();
 
-        return view('backend.setup.group.view-group',$this->data);
+        return view('backend.setup.fee_category.view-fee-category',$this->data);
     }
 
     /**
@@ -33,8 +32,8 @@ class StudentGroupController extends Controller
      */
     public function create()
     {
-         $this->data['mode']             = 'Create';
-         return view('backend.setup.group.form-group',$this->data);
+         $this->data['mode']            = 'Create';
+        return view('backend.setup.fee_category.form-fee-category',$this->data);
     }
 
     /**
@@ -43,15 +42,15 @@ class StudentGroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StudentGroupRequest $request)
+    public function store(FeeCategoryRequest $request)
     {
-        $formdata             = $request->all();
+        $formdata =$request->all();
 
-       if(StudentGroup::create($formdata) ) {
-        Session::flash('message','Data Added Successfully');
-       }
+        if(FeeCategory::create($formdata) ) {
+            Session::flash('message','Data Added Successfully');
+        }
 
-       return redirect()->to('student_group');  
+        return redirect()->to('fee');
     }
 
     /**
@@ -73,10 +72,11 @@ class StudentGroupController extends Controller
      */
     public function edit($id)
     {
-          $this->data['mode']             = 'Edit';
-         $this->data['student_group']     = StudentGroup::find($id);
+         $this->data['mode']           = 'Edit';
+         $this->data['fee']            = FeeCategory::find($id);
 
-          return view('backend.setup.group.form-group',$this->data);
+        return view('backend.setup.fee_category.form-fee-category',$this->data);
+
     }
 
     /**
@@ -86,17 +86,17 @@ class StudentGroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StudentGroupRequest $request, $id)
+    public function update(FeeCategoryRequest $request, $id)
     {
-        $data                                = $request->all();
+        $data                      = $request->all();
 
-        $student_group                       = StudentGroup::find($id);
-        $student_group->group                = $data['group'];
+        $fee                       = FeeCategory::find($id);
+        $fee->fee                  = $data['fee'];
 
-        if($student_group->save() ) {
+        if($fee->save() ) {
            Session::flash('message','Data Updated Successfully');
         }
-         return redirect()->to('student_group');
+         return redirect()->to('fee');
     }
 
     /**
@@ -107,11 +107,11 @@ class StudentGroupController extends Controller
      */
     public function destroy($id)
     {
-        $group = StudentGroup::find($id);
-         if($group->delete() ) {
+        $fee = FeeCategory::find($id);
+         if($fee->delete() ) {
             Session::flash('message','Data Delete Successfully');
          }
 
-         return redirect()->to('student_group');
+         return redirect()->to('fee');
     }
 }
