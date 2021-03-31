@@ -4,11 +4,14 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
+
+//Setup Management Controller
 use App\Http\Controllers\Backend\Setup\StudentSetupController;
 use App\Http\Controllers\Backend\Setup\YearController;
 use App\Http\Controllers\Backend\Setup\StudentGroupController;
 use App\Http\Controllers\Backend\Setup\StudentShiftController;
 use App\Http\Controllers\Backend\Setup\FeeCategoryController;
+use App\Http\Controllers\Backend\Setup\FeeAmountController;
 
 
 
@@ -42,16 +45,13 @@ Route::get('contact',[App\Http\Controllers\Frontend\FrontendController::class,'c
 // Route::resource('city', CitiesController::class);
 
 Route::resource('user',UserController::class,['except' => ['show'] ]);
-
 Route::resource('profile',ProfileController::class);
 
+//Setup Management all Route
 Route::resource('setup',StudentSetupController::class);
-
 Route::resource('year',YearController::class);
-
 Route::resource('student_group',StudentGroupController::class);
-
 Route::resource('shift',StudentShiftController::class);
-
 Route::resource('fee',FeeCategoryController::class);
+Route::resource('amount',FeeAmountController::class);
 
