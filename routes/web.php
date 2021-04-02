@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\Setup\FeeCategoryController;
 use App\Http\Controllers\Backend\Setup\FeeAmountController;
 use App\Http\Controllers\Backend\Setup\ExamTypeController;
 use App\Http\Controllers\Backend\Setup\SubjectController;
+use App\Http\Controllers\Backend\Setup\DesingnationController;
 
 
 
@@ -27,7 +28,21 @@ use App\Http\Controllers\Backend\Setup\SubjectController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Route for Sales
 
+
+// use App\Http\Controllers\UserSalesController;
+// Route::get('users/{id}/sales',[UserSalesController::class,'index'])->name('user.sales');
+
+// Route::post('users/{id}/invoices',[UserSalesController::class,'createinvoice'])->name('user.sales.store');
+// Route::get('users/{id}/invoices/{invoice_id}',[UserSalesController::class,'detialsinvoice'])->name('user.sales.invoice_details');
+
+
+// Route::delete('users/{id}/invoices/{invoice_id}',[UserSalesController::class,'destroy'])->name('user.sales.destroy');
+
+// Route::post('users/{id}/invoices/{invoice_id}',[UserSalesController::class,'additem'])->name('user.sales.invoice.additem');
+
+// Route::delete('users/{id}/invoices/{invoice_id}/{item_id}',[UserSalesController::class,'destroyItem'])->name('user.sales.invoice.delete_item');
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -57,6 +72,10 @@ Route::resource('fee',FeeCategoryController::class);
 Route::resource('amount',FeeAmountController::class);
 Route::resource('exam_type',ExamTypeController::class);
 Route::resource('setup_subject',SubjectController::class);
+Route::resource('designation_setup',DesingnationController::class);
+
+
+
 
 
 
