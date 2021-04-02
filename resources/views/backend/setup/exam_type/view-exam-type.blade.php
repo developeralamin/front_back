@@ -10,11 +10,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Manage Fee Category Amount</h1>
+            <h1 class="m-0">Manage Exam Type</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <a href="{{ route('amount.create') }}" class="btn btn-danger"> <i class="fa fa-plus-circle"></i>  Add Fee Amount</a>
+              <a href="{{ route('exam_type.create') }}" class="btn btn-danger"> <i class="fa fa-plus-circle"></i> Add Exam </a>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -24,7 +24,7 @@
 <!-- DataTales Example -->
 <div class="card shadow page-header mb-4">
    <div class="card-header py-3">
-       <h6 class="m-0 font-weight-bold text-primary"> Fee Amount List</h6>
+       <h6 class="m-0 font-weight-bold text-primary">Student Exam Type List</h6>
     </div>
    
       
@@ -35,7 +35,7 @@
               <thead>
                   <tr>                                              
                     <th>SL.</th>                          
-                    <th>Fee Category</th>                            
+                    <th>Exam Type</th>                            
                     <th class="text-right">Actions</th>                     
                     </tr>
                 </thead>
@@ -43,27 +43,27 @@
                <tfoot>
                    <tr>                                              
                     <th>SL.</th>      
-                     <th>Fee Category</th>                          
+                    <th>Exam</th>                        
                     <th class="text-right">Actions</th>                     
                     </tr>
             </tfoot>
 
                                     
        <tbody>
-@foreach($amount as $key=>$amount)
+@foreach($exam_types as $key=>$exam_type)
        <tr>
           <td>{{ $key+1 }}</td>
-          <td>{{ $amount['fee_category']['fee']}}</td>
+          <td>{{ $exam_type->exam_name }}</td>
           
 
           
           <td class="text-right">
-         <form method='post' action="{{ route('amount.destroy',['amount' => $amount->fee_category_id]) }}">
+         <form method='post' action="{{ route('exam_type.destroy',['exam_type' => $exam_type->id]) }}">
             @csrf
-        <a href="{{ route('amount.show',$amount->fee_category_id) }}"class="btn btn-success">
+{{--         <a href=""class="btn btn-info">
           <i class="fa fa-eye"></i>
-         </a>   
-        <a href="{{ route('amount.edit',$amount->fee_category_id) }}"class="btn btn-info">
+         </a>   --}} 
+        <a href="{{ route('exam_type.edit',['exam_type' => $exam_type->id]) }}"class="btn btn-info">
           <i class="fa fa-edit"></i>
          </a>  
 

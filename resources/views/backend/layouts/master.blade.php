@@ -120,6 +120,13 @@
                {{ session('message') }}
             </div>
            @endif
+
+{{--            @if(session('error'))
+           <div class="alert alert-danger  text-center" role="alert">
+               {{ session('message') }}
+            </div>
+
+           @endif --}}
   </div>
      </div>
    </div>              

@@ -12,6 +12,8 @@ use App\Http\Controllers\Backend\Setup\StudentGroupController;
 use App\Http\Controllers\Backend\Setup\StudentShiftController;
 use App\Http\Controllers\Backend\Setup\FeeCategoryController;
 use App\Http\Controllers\Backend\Setup\FeeAmountController;
+use App\Http\Controllers\Backend\Setup\ExamTypeController;
+use App\Http\Controllers\Backend\Setup\SubjectController;
 
 
 
@@ -35,7 +37,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 // use App\Http\Controllers\AdvertismentsController;
 Route::get('/',[App\Http\Controllers\Frontend\FrontendController::class,'index']);
 Route::get('about-us',[App\Http\Controllers\Frontend\FrontendController::class,'about_us']);
@@ -54,4 +55,12 @@ Route::resource('student_group',StudentGroupController::class);
 Route::resource('shift',StudentShiftController::class);
 Route::resource('fee',FeeCategoryController::class);
 Route::resource('amount',FeeAmountController::class);
+Route::resource('exam_type',ExamTypeController::class);
+Route::resource('setup_subject',SubjectController::class);
+
+
+
+
+
+
 

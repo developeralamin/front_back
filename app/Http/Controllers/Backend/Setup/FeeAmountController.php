@@ -20,7 +20,7 @@ class FeeAmountController extends Controller
      */
     public function index()
     {
-        $this->data['amount'] = FeeCategoryAmount::all();
+        $this->data['amount'] = FeeCategoryAmount::select('fee_category_id')->groupBy('fee_category_id')->get();
 
         return view('backend.setup.fee_amount.view-fee-amount',$this->data);
     }
@@ -32,8 +32,8 @@ class FeeAmountController extends Controller
      */
     public function create()
     {
-        $this->data['fee_categories']    = FeeCategory::all();
-        $this->data['classes']           = StudentSetup::all();
+        $this->data['fee_categories']      = FeeCategory::all();
+        $this->data['classes']              = StudentSetup::all();
         return view('backend.setup.fee_amount.add-fee-amount',$this->data);
     }
 
@@ -59,7 +59,7 @@ class FeeAmountController extends Controller
         }
     }
 
-        return redirect()->to('amount');
+        return redirect()->to('amount')->with('message','Data Added Successfully');
     }
 
     /**
@@ -68,10 +68,15 @@ class FeeAmountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($fee_category_id)
     {
-        //
-    }
+  $this->data['editdata']          = FeeCategoryAmount::where('fee_category_id',$fee_category_id)->orderBy('class_id','asc')->get();
+
+        // dd($this->data['editdata']->toarray());
+
+     return view('backend.setup.fee_amount.details-fee-amount',$this->data);
+
+   }
 
     /**
      * Show the form for editing the specified resource.
@@ -79,9 +84,17 @@ class FeeAmountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($fee_category_id)
     {
-        //
+        $this->data['editdata']          = FeeCategoryAmount::where('fee_category_id',$fee_category_id)->orderBy('class_id','asc')->get();
+
+        // dd($this->data['editdata']->toarray());
+
+        $this->data['fee_categories']    = FeeCategory::all();
+        $this->data['classes']           = StudentSetup::all();
+
+     return view('backend.setup.fee_amount.edit-fee-amount',$this->data);
+
     }
 
     /**
@@ -91,9 +104,26 @@ class FeeAmountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $fee_category_id)
     {
-        //
+        // if($request->class_id==NULL){
+        //     return redirect()->back()->with('error','Sorry! you do not select any item');
+        // }
+        // else{
+        //     FeeCategoryAmount::where('fee_category_id',$fee_category_id)->delete();
+
+        //    $countClass = count($request->class_id);
+        //     for ($i=0; $i < $countClass; $i++) { 
+        //     $fee_amount = New FeeCategoryAmount();
+
+        //     $fee_amount->fee_category_id   = $request->fee_category_id;
+        //     $fee_amount->class_id          = $request->class_id[$i];
+        //     $fee_amount->amount            = $request->amount[$i];
+
+        //     $fee_amount->save();
+        // }
+        // }
+        // return redirect()->route('amount')->with('message','Data Updated Successfully');
     }
 
     /**
