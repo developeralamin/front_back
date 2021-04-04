@@ -49,7 +49,7 @@
           </li>
          
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Management Setup
@@ -59,7 +59,7 @@
             </a>
             <ul class="nav nav-treeview">                    
               <li class="nav-item">
-                <a href="{{ url('setup') }}" class="nav-link {{ url('setup')?'active':"" }}">
+                <a href="{{ url('setup') }}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Student Class</p>
                 </a>
@@ -105,7 +105,7 @@
 
              <ul class="nav nav-treeview">                    
               <li class="nav-item">
-                <a href="{{ url('amount') }}" class="nav-link {{ url('amount')?'active':"" }}">
+                <a href="{{ url('amount') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Fee Category Amount</p>
                 </a>
@@ -132,21 +132,24 @@
 
             <ul class="nav nav-treeview">                    
               <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Assign Subject</p>
-                </a>
-              </li>             
-            </ul>
-
-            <ul class="nav nav-treeview">                    
-              <li class="nav-item">
                 <a href="{{ url('designation_setup') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Designation</p>
                 </a>
               </li>             
             </ul>
+
+            
+            <ul class="nav nav-treeview">                    
+              <li class="nav-item">
+                <a href="{{  route('setup.assign.subject.view')  }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Assign Subject</p>
+                </a>
+              </li>             
+            </ul>
+
+
 
 
           </li>

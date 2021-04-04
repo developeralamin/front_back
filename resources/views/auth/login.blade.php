@@ -144,10 +144,19 @@
                        
              <div class="d-flex justify-content-center mt-3 login_container">
              <button type="submit" name="submit" class="btn login_btn">Login</button>
+             <br/>          
             </div>
                     </form>
                 </div>
         
+                <div class="mt-4">
+                    <div class="d-flex justify-content-center links">
+                        Don't have an account? <a href="{{ route('register') }}" class="ml-2">Sign Up</a>
+                    </div>
+                    <div class="d-flex justify-content-center links">
+                        <a href="#">Forgot your password?</a>
+                    </div>
+                </div>
               
 
             </div>

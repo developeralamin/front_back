@@ -32,7 +32,7 @@ class FeeAmountController extends Controller
      */
     public function create()
     {
-        $this->data['fee_categories']      = FeeCategory::all();
+        $this->data['fee_categories']       = FeeCategory::all();
         $this->data['classes']              = StudentSetup::all();
         return view('backend.setup.fee_amount.add-fee-amount',$this->data);
     }

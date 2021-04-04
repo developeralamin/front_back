@@ -111,7 +111,7 @@ class DesingnationController extends Controller
             Session::flash('message','Data Delete Successfully');
         }
 
-        return redirect()->to('designation
-            _setup');
+        return redirect()->to('designation_setup');
+            
     }
 }

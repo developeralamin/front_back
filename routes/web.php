@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\Setup\DesingnationController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,7 +74,26 @@ Route::resource('amount',FeeAmountController::class);
 Route::resource('exam_type',ExamTypeController::class);
 Route::resource('setup_subject',SubjectController::class);
 Route::resource('designation_setup',DesingnationController::class);
+// Route::resource('assign_subject',AssignSubjectController::class);
 
+// Route::get('users/{id}/sales',[UserSalesController::class,'index'])->name('user.sales');
+use App\Http\Controllers\Backend\Setup\AssigningSubjectController;
+Route::get('/assign/subject/view',[AssigningSubjectController::class,'index'])->name('setup.assign.subject.view');
+
+Route::get('/assign/subject/create',[AssigningSubjectController::class,'create'])->name('setup.assign.subject.create');
+
+
+Route::post('/assign/subject/store',[AssigningSubjectController::class,'store'])->name('setup.assign.subject.store');
+
+
+Route::get('/assign/subject/edit/{class_id}',[AssigningSubjectController::class,'edit'])->name('setup.assign.subject.edit');
+
+
+Route::post('/assign/subject/update/{class_id}',[AssigningSubjectController::class,'update'])->name('setup.assign.subject.update');
+
+Route::delete('/assign/subject/delete/{id}',[AssigningSubjectController::class,'delete'])->name('setup.assign.subject.delete');
+
+Route::get('/assign/subject/details/{class_id}',[AssigningSubjectController::class,'details'])->name('setup.assign.subject.details');
 
 
 

@@ -72,10 +72,12 @@
           <select name="fee_category_id" class="form-control" required>
             <option value="">Select Fee Category</option>
 
-           @foreach($fee_categories as $key => $category)
-            <option value="{{ $category->id }}" {{ ($editdata['0']->fee_category_id==$category->id)?"selected":"hwlo" }}>{{ $category->fee }}</option>}
+  @foreach($fee_categories as $key => $category)
+      <option value="{{ $category->id }}" 
+          {{ ($editdata['0']->fee_category_id==$category->id)?"selected":"" }}>
+          {{ $category->fee }}</option>}
             
-           @endforeach
+      @endforeach
 
           </select>           
          </div>
