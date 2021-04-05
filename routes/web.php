@@ -91,7 +91,7 @@ Route::get('/assign/subject/edit/{class_id}',[AssigningSubjectController::class,
 
 Route::post('/assign/subject/update/{class_id}',[AssigningSubjectController::class,'update'])->name('setup.assign.subject.update');
 
-Route::delete('/assign/subject/delete/{id}',[AssigningSubjectController::class,'delete'])->name('setup.assign.subject.delete');
+Route::delete('/assign/subject/delete/',[AssigningSubjectController::class,'destroy'])->name('setup.assign.delete');
 
 Route::get('/assign/subject/details/{class_id}',[AssigningSubjectController::class,'details'])->name('setup.assign.subject.details');
 

@@ -132,8 +132,11 @@ class FeeAmountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($fee_category_id)
     {
-        //
+        if(FeeCategoryAmount::find($id)->delete()){
+            Session::flash('message','Data Deleted Successfully');
+        }
+        return redirect('')->to('amount');
     }
 }

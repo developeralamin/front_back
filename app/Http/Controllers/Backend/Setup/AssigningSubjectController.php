@@ -69,7 +69,7 @@ public function update(Request $request,$class_id)
 
 {
 	if($request->subject_id==NULL){
-        return redirect()->back()->with('error','Sorry! you do not select any item');
+        return redirect()->back()->with('message','Sorry! you do not select any item');
       }
 
      else{
@@ -108,9 +108,9 @@ public function details($class_id)
    }
 
 
-public function delete($id)
+public function destroy($id)
 {
-	if(SubjectAssign::find($id)->delete($id)){
+	if(SubjectAssign::find($id)->delete()){
 		Session::flash('message','Data Delete Successfully');
 	}
 

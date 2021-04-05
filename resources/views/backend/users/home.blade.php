@@ -35,7 +35,7 @@
               <thead>
                   <tr>                                              
                     <th>SL.</th>      
-                         
+                    <th>Role</th>      
                     <th>Name</th>      
                     <th>E-mail</th>      
                     <th class="text-right">Actions</th>                     
@@ -45,7 +45,7 @@
                <tfoot>
                    <tr>                                              
                     <th>SL.</th>      
-
+                    <th>Role</th> 
                     <th>Name</th>      
                     <th>E-mail</th>      
                     <th class="text-right">Actions</th>                     
@@ -57,6 +57,7 @@
 @foreach($users as $key=>$user)
        <tr>
           <td>{{ $key+1 }}</td>
+          <td>{{ $user->usertype }}</td>
           <td>{{ $user->name }}</td>
           <td>{{ $user->email }}</td>
 

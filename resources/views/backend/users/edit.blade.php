@@ -52,13 +52,10 @@
 
      
 
-{{--     @if($mode == 'Edit')
 
     {{  Form::model($user,['route' =>['user.update',$user->id], 'method' => 'put']) }}
    
-    @else --}}
-
-    {!! Form::open(['route' => 'user.store','method' => 'post']) !!}
+    {{-- {!! Form::open(['route' => 'user.store','method' => 'post']) !!} --}}
 
     {{-- @endif --}}
 
@@ -66,15 +63,15 @@
     <label for="user_type">Role<span class="text-danger">*</span></label>
      <select name="usertype" id="user_type"  class="form-control">
        <option value="">Select Role</option>
-        <option value="Admin">Admin</option>
-       <option value="User">User</option>
+        <option value="Admin" {{ ($user->usertype=="Admin")?'selected':"" }}>Admin</option>
+       <option value="User" {{ ($user->usertype=="User")?'selected':"" }}>User</option>
      </select>
   </div>
 
 
   <div class="form-group">
     <label for="name">Name<span class="text-danger">*</span></label>
-     {{ Form::text('name', NULL, ['class'=>'form-control', 'id' => 'name', 'placeholder' => 'Name' ]) }}
+     <input type="text" name="name" value="{{ $user->name }}" class="form-control">
     <font style="color: red">
       {{ ($errors->has('name'))?($errors->first('name')):'' }}
      </font>
@@ -83,30 +80,14 @@
 
   <div class="form-group">
     <label for="email">E-mail<span class="text-danger">*</span></label>
-     {{ Form::text('email', NULL, [ 'class'=>'form-control', 'id' => 'email', 'placeholder' => 'Email' ]) }}
+    <input type="text" name="email" value="{{ $user->email }}" class="form-control">
     <font style="color: red">
       {{ ($errors->has('email'))?($errors->first('email')):'' }}
      </font>
   </div>
 
-{{-- @if($mode == 'create') --}}
-  <div class="form-group">
-    <label for="password">Password<span class="text-danger">*</span></label>
-  
-           {{-- {{ Form::password('password', NULL, [ 'class'=>'form-control', 'id' => 'password', 'placeholder' => 'Password' ]) }} --}}
-  <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-    
 
-  </div>
 
-  <div class="form-group">
-    <label for="password">Confirm Password<span class="text-danger">*</span></label>
-     {{-- {{ Form::password('password', NULL, [ 'class'=>'form-control', 'id' => 'password', 'placeholder' => 'Password' ]) }} --}}
-      <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-  </div>
-{{-- @else --}}
-
-{{-- @endif --}}
   <button type="submit" class="btn btn-primary">Submit</button>
 
 {!! Form::close() !!}      

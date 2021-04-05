@@ -57,7 +57,7 @@
 
           <td class="text-right">
 
-         <form method='post' action="{{ route('setup.assign.subject.delete',$value->class_id) }}">
+         <form method='post' action="{{ route('setup.assign.delete',[$value->id,'student_class'=>$value->class_id]) }}">
             @csrf
         <a href="{{ route('setup.assign.subject.details',$value->class_id) }}"class="btn btn-success">
           <i class="fa fa-eye"></i>

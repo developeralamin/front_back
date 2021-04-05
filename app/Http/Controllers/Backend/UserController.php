@@ -51,14 +51,21 @@ public function __construct()
      */
     public function store(Request $request)
     {
-        $formdata  = $request->all();
 
-        if(User::create($formdata) ) {
-            Session::flash('message','Data Added Successfully');
-        }
+        $this->validate($request,[
+          'name' => 'required',
+          'email' => 'required|unique:users,email',
+        ]);
 
-        return redirect()->to('user');
-      // return redirect()->to('camp');
+        $data = New User();
+
+        $data->usertype  = $request->usertype;
+        $data->name      = $request->name;
+        $data->email     = $request->email;
+        $data->password  = bcrypt($request->password);
+ 
+       $data->save();
+       return redirect()->to('user')->with('message','Data Added Successfully');
     }
 
     /**
@@ -80,11 +87,11 @@ public function __construct()
      */
     public function edit($id)
     {
-         $this->data['mode']        = 'Edit';
+        
          $this->data['user']         = User::find($id);
 
 
-         return view('backend.users.create',$this->data);
+         return view('backend.users.edit',$this->data);
     }
 
     /**
@@ -96,16 +103,14 @@ public function __construct()
      */
     public function update(Request $request, $id)
     {
-         $data                    = $request->all();
+          $data =User::find($id);
 
-        $user                      = User::find($id);
-        $user->name                = $data['name'];
-        $user->email               = $data['email'];
+        $data->usertype  = $request->usertype;
+        $data->name      = $request->name;
+        $data->email     = $request->email;
 
-        if($user->save() ) {
-           Session::flash('message','Data Updated Successfully');
-        }
-         return redirect('user');
+       $data->save();
+       return redirect()->to('user')->with('message','Data Update Successfully');
     }
 
     /**
