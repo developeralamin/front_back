@@ -82,12 +82,9 @@ Route::get('/assign/subject/view',[AssigningSubjectController::class,'index'])->
 
 Route::get('/assign/subject/create',[AssigningSubjectController::class,'create'])->name('setup.assign.subject.create');
 
-
 Route::post('/assign/subject/store',[AssigningSubjectController::class,'store'])->name('setup.assign.subject.store');
 
-
 Route::get('/assign/subject/edit/{class_id}',[AssigningSubjectController::class,'edit'])->name('setup.assign.subject.edit');
-
 
 Route::post('/assign/subject/update/{class_id}',[AssigningSubjectController::class,'update'])->name('setup.assign.subject.update');
 
@@ -96,6 +93,21 @@ Route::delete('/assign/subject/delete/',[AssigningSubjectController::class,'dest
 Route::get('/assign/subject/details/{class_id}',[AssigningSubjectController::class,'details'])->name('setup.assign.subject.details');
 
 
+use App\Http\Controllers\Backend\Student\StudentRegController;
+
+Route::get('/reg/view',[StudentRegController::class,'index'])->name('student.registration.view');
+
+Route::get('/reg/create',[StudentRegController::class,'create'])->name('student.registration.create');
+
+Route::post('/reg/store',[StudentRegController::class,'store'])->name('student.registration.store');
+
+Route::get('/reg/edit/{id}',[StudentRegController::class,'edit'])->name('student.registration.edit');
+
+Route::post('/reg/update/{id}',[StudentRegController::class,'update'])->name('student.registration.update');
+
+Route::delete('/reg/delete/',[StudentRegController::class,'destroy'])->name('student.delete');
+
+Route::get('/reg/details/{id}',[StudentRegController::class,'details'])->name('student.registration.details');
 
 
 

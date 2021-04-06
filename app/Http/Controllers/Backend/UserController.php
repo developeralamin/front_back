@@ -27,7 +27,7 @@ public function __construct()
      */
     public function index()
     {
-       $this->data['users'] = User::all();
+       $this->data['users'] = User::where('usertype','Admin')->get();
 
        return view('backend.users.home',$this->data);
     }
@@ -58,11 +58,13 @@ public function __construct()
         ]);
 
         $data = New User();
-
-        $data->usertype  = $request->usertype;
+        $code=rand(0000,9999);
+        $data->usertype  = 'Admin';
+        $data->role      = $request->role;
         $data->name      = $request->name;
         $data->email     = $request->email;
-        $data->password  = bcrypt($request->password);
+        $data->password  = bcrypt($code);
+        $data->code      = $code;
  
        $data->save();
        return redirect()->to('user')->with('message','Data Added Successfully');
@@ -105,7 +107,7 @@ public function __construct()
     {
           $data =User::find($id);
 
-        $data->usertype  = $request->usertype;
+        // $data->usertype  = $request->usertype;
         $data->name      = $request->name;
         $data->email     = $request->email;
 

@@ -60,11 +60,11 @@
     {{-- @endif --}}
 
   <div class="form-group">
-    <label for="user_type">Role<span class="text-danger">*</span></label>
-     <select name="usertype" id="user_type"  class="form-control">
+    <label for="role">Role<span class="text-danger">*</span></label>
+     <select name="role" id="role"  class="form-control">
        <option value="">Select Role</option>
-        <option value="Admin" {{ ($user->usertype=="Admin")?'selected':"" }}>Admin</option>
-       <option value="User" {{ ($user->usertype=="User")?'selected':"" }}>User</option>
+        <option value="Admin" {{ ($user->role=="Admin")?'selected':"" }}>Admin</option>
+       <option value="Operator" {{ ($user->role=="Operator")?'selected':"" }}>Operator</option>
      </select>
   </div>
 

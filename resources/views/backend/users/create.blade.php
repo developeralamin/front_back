@@ -63,11 +63,11 @@
     {{-- @endif --}}
 
   <div class="form-group">
-    <label for="user_type">Role<span class="text-danger">*</span></label>
-     <select name="usertype" id="user_type"  class="form-control">
+    <label for="role">Role<span class="text-danger">*</span></label>
+     <select name="role" id="role"  class="form-control">
        <option value="">Select Role</option>
         <option value="Admin">Admin</option>
-       <option value="User">User</option>
+       <option value="Operator">Operator</option>
      </select>
   </div>
 
@@ -90,23 +90,16 @@
   </div>
 
 {{-- @if($mode == 'create') --}}
-  <div class="form-group">
+{{--   <div class="form-group">
     <label for="password">Password<span class="text-danger">*</span></label>
-  
-           {{-- {{ Form::password('password', NULL, [ 'class'=>'form-control', 'id' => 'password', 'placeholder' => 'Password' ]) }} --}}
   <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-    
-
   </div>
 
   <div class="form-group">
     <label for="password">Confirm Password<span class="text-danger">*</span></label>
-     {{-- {{ Form::password('password', NULL, [ 'class'=>'form-control', 'id' => 'password', 'placeholder' => 'Password' ]) }} --}}
       <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-  </div>
-{{-- @else --}}
+  </div> --}}
 
-{{-- @endif --}}
   <button type="submit" class="btn btn-primary">Submit</button>
 
 {!! Form::close() !!}      

@@ -10,11 +10,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Users All</h1>
+            <h1 class="m-0">Manage Student</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <a href="{{ route('user.create') }}" class="btn btn-danger"> <i class="fa fa-plus-circle"></i> Add User </a>
+              <a href="{{ route('student.registration.create') }}" class="btn btn-danger"> <i class="fa fa-plus-circle"></i> Add Student </a>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -24,43 +24,36 @@
 <!-- DataTales Example -->
 <div class="card shadow page-header mb-4">
    <div class="card-header py-3">
-       <h6 class="m-0 font-weight-bold text-primary"> User Information</h6>
+       <h6 class="m-0 font-weight-bold text-primary">Student List</h6>
     </div>
    
-      
-    
   <div class="card-body">
      <div class="table-responsive">
    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                   <tr>                                              
-                    <th>SL.</th>      
-                    <th>Role</th>      
-                    <th>Name</th>      
-                    <th>E-mail</th>      
-                    <th>Code</th>      
+                    <th>SL.</th>                          
+                    <th>Name</th>                            
+                    <th>ID No</th>                            
                     <th class="text-right">Actions</th>                     
                     </tr>
                 </thead>
-
-                                    
+                        
        <tbody>
-@foreach($users as $key=>$user)
+@foreach($allData as $key=> $value )
        <tr>
           <td>{{ $key+1 }}</td>
-          <td>{{ $user->usertype }}</td>
-          <td>{{ $user->name }}</td>
-          <td>{{ $user->email }}</td>
-          <td>{{ $user->code }}</td>
+          <td>{{ $value->class_id }}</td>
+          <td>{{ $value->year_id }}</td>
 
-          
           <td class="text-right">
-         <form method='post' action="{{ route('user.destroy',['user' => $user->id]) }}">
+
+         <form method='post' action="{{ route('setup.assign.delete',[$value->id,'student_class'=>$value->class_id]) }}">
             @csrf
-{{--         <a href=""class="btn btn-info">
+        <a href="{{ route('student.registration.details',$value->id) }}"class="btn btn-success">
           <i class="fa fa-eye"></i>
-         </a>   --}} 
-        <a href="{{ route('user.edit',['user' => $user->id]) }}"class="btn btn-info">
+         </a>   
+        <a href="{{ route('student.registration.edit',$value->id) }}"class="btn btn-info">
           <i class="fa fa-edit"></i>
          </a>  
 
